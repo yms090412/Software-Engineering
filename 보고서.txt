@@ -1,0 +1,50 @@
+1.VCS (Version Control System) 이란 무엇인가?
+--->파일의 변화를 추적하고 관리하는 시스템으로 소프트웨어 엔지니어링에서는 코드의 변화를 추적하고 관리하는데 사용된다.
+
+2.GIT 이 SVN 과 같은 중앙집중식 VCS 와 가장 큰 차이는 무엇인가?
+-->중앙집중식은 각 클라이언트가 파일들의 마지막 스냅샷만 가져오고 GIT은 checkout을 할때마다 레퍼지토리를 통째로 복사한다.
+
+3.파일의 변경 사항을 저장소에 반영할 때 git add 와 git add –p 의 차이는 무엇인가?
+-->git add는 파일의 변경 사항을 통째로 저장소에 반영하고 , git add -p는 파일의 변경 사항을 잘게 쪼개서 add할지 결정 할 수 있다.
+
+4.다음 페이지의 Git lifecycle 을 참고해서 다음 케이스들에서 file1 이 어떤 state 인지 기술하라. (참고: git status 로 확인 가능하다.)
+     1  저장소에 없는 file1 이라는 파일을 메모장으로 만든 직후 
+	--> Untracked
+   2  git add 와 git commit 으로 file1 을 저장소에 추가한 직후
+	-->  Unmodified
+   3  file의 내용을 수정한 직후
+	-->Modified
+     4  수정한 file1을 git add 또는 git add –p 한 직후
+	-->Staged
+   5  git commit 명령을 한 직후 
+	-->Unmodified
+5.Step #6 에서 메모장으로 확인한 file1 의 내용은 무엇인가?
+--> Great weather 이 사라지고 Hello world! What a wonderful world!이 있다.
+
+6.Step #7 에서 file2 는 존재하는가? 그 내용은 무엇인가? 만일 존재하지 않는다면 왜 존재하지 않는지 기술하라.
+	존재하지 않음    master branch에서 file2를 add commit 했기 때문에 branch2 branch에는 존재하지 않는다.
+
+7.git show-branch 명령은 변경 사항에 대한 commit graph 를 보여준다.
+	Step #1-#7 까지 작업한 뒤의 commit graph 는 어떻게 되는가?
+* [branch2] great
+ ! [master] file2
+--
+ + [master] file2
+*  [branch2] great
+*+ [master^] wondeful
+
+8.Step #8 로 생성한 github 상의 저장소 주소는 무엇인가?
+	https://github.com/yms090412/Software-Engineering
+
+9.	git 에서 다른 branch 의 내용을 반영하는 방식에는 merge 와 rebase 가 있다.
+	두 방식의 차이에 대해서 조사해서 설명하라.
+-->	merge는 두 브랜치를 병합하는 커밋로그가 새롭게 추가된다. 커밋 순서가 변경되지 않고 유지된다.
+	rebase는 두 브랜치를 이어주는데 기존의 마지막 커밋 뒤에 병합할 브랜치의 커밋들이 합쳐지게 된다.
+
+10.	git cherry-pick 이 어떤 일을 하는 명령인지 조사해서 설명하라.
+	다른 브랜치의 특정 커밋을 내 브랜치에 적용시킬 수 있게 하는 명령어
+	git cherry-pick commit1  <-- 이렇게 하면 commit1이 내 브랜치에 commit1이 적용된다.
+
+11.	git rebase -i 가 어떤 일을 하는 명령인지 조사하라. 직전 두 커밋의 순서를 바꾸고자 할 때 git rebase -i 를 써서 해결할 수 있다. 그 방법을 설명하라. 
+		커밋한 히스토리들을 변경 또는 삭제할 수 있는 명령 git rebase -i commit1  을 하면 commit1 전의 commit들을 가져온다.
+		
